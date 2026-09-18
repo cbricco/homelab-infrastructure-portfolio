@@ -56,13 +56,13 @@ The real Proxmox API endpoint is supplied through an ignored local
 `terraform.tfvars` file rather than being committed to Git. See
 [Phase 1 Variable Reference](docs/VARIABLES.md).
 
-## What I learned and can explain
+## What I worked through
 
-Phase 1 gave me hands-on experience with:
+Phase 1 involved supervised work with:
 
 - reading and changing Terraform-compatible HCL
 - OpenTofu initialization, formatting, validation, planning, applying, and
-  destroying under human supervision
+  destroying
 - reviewing proposed infrastructure changes before applying them
 - cloning a disposable Proxmox VM from a template
 - cloud-init configuration
@@ -71,18 +71,17 @@ Phase 1 gave me hands-on experience with:
 - making a controlled configuration change and checking for drift
 - destroying and recreating a disposable workload
 - documenting recovery limitations
-- working with scoped Proxmox permissions
+- troubleshooting a Proxmox permissions failure during recreation
 - keeping API credentials and state out of Git
 
-One especially useful failure occurred during the destroy/recreate exercise.
-The original VM-management ACL was attached directly to the disposable VM path.
-Destroying the VM also removed that VM-specific ACL. The next create attempt
-authenticated correctly but received HTTP 403 because the required
-VM-management permission no longer existed.
+During the destroy/recreate exercise, the recreated VM initially failed with an
+HTTP 403 permission error. The original VM-management permission had been
+associated with the disposable VM itself, so it did not survive destruction of
+that VM.
 
-Moving the limited VM-management role to the persistent `tofu-lab` pool allowed
-the permission boundary to survive destruction and recreation of the disposable
-VM.
+The permission was later associated with the persistent `tofu-lab` resource
+pool instead. Because the pool remains in place when the disposable VM is
+deleted, the required permission was still available when the VM was recreated.
 
 ## AI-assisted workflow
 
