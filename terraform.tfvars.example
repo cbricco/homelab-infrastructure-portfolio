@@ -1,0 +1,9 @@
+# Copy this file to terraform.tfvars and replace the example endpoint
+# with the HTTPS API endpoint for your own Proxmox VE host.
+#
+# terraform.tfvars is intentionally ignored by Git.
+
+proxmox_endpoint = "https://proxmox.example.invalid:8006/"
+
+# Optional if your dedicated public SSH key is stored elsewhere:
+# ssh_public_key_path = "~/.ssh/homelab_iac_ed25519.pub"

@@ -1,0 +1,46 @@
+# OpenTofu working directory and downloaded providers
+.terraform/
+
+# OpenTofu state
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Saved plan files may contain sensitive values
+*.tfplan
+*.plan
+
+# Local variable files may contain credentials or secrets
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Environment/secrets files
+.env
+.env.*
+secrets/
+credentials/
+
+# Private keys
+*.pem
+*.key
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+
+# Crash/error logs
+crash.log
+crash.*.log
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Editor/OS clutter
+.vscode/
+.idea/
+*~
+.DS_Store
