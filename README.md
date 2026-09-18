@@ -282,9 +282,12 @@ Current VM state:
 - establish and test an encrypted off-workstation state backup
 - perform an actual state restore drill
 - document independent credential recovery
-- perform a complete current-tree and Git-history privacy/secret review before
-  any public release
-- create a sanitized employer-facing publication only after that review
+- repeat the privacy/secret review before future public updates
+- keep the sanitized portfolio snapshot separate from the local development
+  history
+
+This repository is a sanitized employer-facing snapshot; its publication
+history is intentionally separate from the local development history.
 
 A later phase may introduce a very small noncritical public-cloud workload, but
 no public-cloud deployment is claimed by this Phase 1 project.
